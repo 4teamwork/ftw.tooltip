@@ -43,6 +43,7 @@ You can load both examples on your site by register the following adapters:
 Or if you are using zcml.
 
 ::
+
     <adapter
         factory="ftw.tooltip.demo_tooltip_source.DemoStaticTooltipSource" name="demo1" />
     <adapter
@@ -87,8 +88,9 @@ css class is available
 
 
 ::
-        >>> <adapter
-        ...    factory="your.module.EditBarTooltip" name="my_edit_bar_tooltip" />
+
+    >>> <adapter
+    ...    factory="your.module.EditBarTooltip" name="my_edit_bar_tooltip" />
 
 
 Links
