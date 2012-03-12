@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="ftw.tooltip">
+
+
+    <!-- <adapter
+        factory="ftw.tooltip.demo_tooltip_source.DemoStaticTooltipSource" name="demo1" />
+    <adapter
+        factory="ftw.tooltip.demo_tooltip_source.DemoDynamicTooltipSource" name="demo2" /> -->
+
+
+    <browser:page
+        for="*"
+        name="dynamic_tooltips.js"
+        class=".tooltip.TooltipJs"
+        permission="zope2.View"
+        />
+
+    <browser:resource
+        name="ftw_tooltip.css" file="ftw_tooltip.css" />
+</configure>

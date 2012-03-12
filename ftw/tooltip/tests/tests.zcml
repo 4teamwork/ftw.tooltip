@@ -1,0 +1,18 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="Five">
+
+    <include package="Products.Five" file="meta.zcml" />
+   <include package="zope.traversing" />
+   <permission
+      id="zope2.View"
+      title="View"
+      />
+
+    <!-- <adapter
+        factory="ftw.tooltip.demo_tooltip_source.DemoStaticTooltipSource" name="demo1" />
+    <adapter
+        factory="ftw.tooltip.demo_tooltip_source.DemoDynamicTooltipSource" name="demo2" /> -->
+
+
+
+</configure>
