@@ -2,7 +2,8 @@
 var ftwtooltips = <span tal:replace="ftwtooltips" />;
 
 function ShowTooltip(item){
-    jq(item.selector).live('mouseover', function(){
+    jq(item.selector).live('mouseover', function(e){
+        e.preventDefault();
         var $this = jq(this);
         if (item.text){
             $this.attr('title', item.text);
@@ -10,7 +11,7 @@ function ShowTooltip(item){
         if ($this.attr('title')){
             $this.tooltip({
                 opacity: 0.7,
-                layout: "<span tal:replace="structure view/get_tooltip_layout" />",
+                layout: '<span tal:replace="structure view/get_tooltip_layout" />',
                 events: {
                     tooltip: 'mouseleave'
                 }
