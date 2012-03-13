@@ -1,7 +1,7 @@
 from zope.component import adapts
 from zope.interface import implements, Interface
 from ftw.tooltip.interfaces import ITooltipSource
-
+from ftw.tooltip import _
 
 
 class DemoStaticTooltipSource(object):
@@ -24,7 +24,7 @@ class DemoStaticTooltipSource(object):
     def tooltips(self):
         return [{
             'selector': u'#portal-logo',
-            'text': u'This is the tooltip',
+            'text': _(u'This is the tooltip'),
             'condition': 'body'
         }]
 

@@ -125,8 +125,12 @@ class TestTooltip(MockTestCase):
         view = getMultiAdapter((object(), self.request), name="dynamic_tooltips.js")
         self.assertEqual(view.get_tooltip_layout(), "<div class='MyToolTipCustomKlass'/>")
         self.assertIn(
-            view.get_tooltip_layout().replace('<', '&lt;').replace('>', '&gt;'),
+            view.get_tooltip_layout(),
             view())
+
+    def test_translation_text(self):
+        view = getMultiAdapter((object(), self.request), name="dynamic_tooltips.js")
+        js = view.generate_tooltip_js_source()
 
 
     def test_if_no_source_available(self):

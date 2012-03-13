@@ -2,7 +2,8 @@ from Products.Five.browser import BrowserView
 from zope.component import getAdapters, queryMultiAdapter
 from ftw.tooltip.interfaces import ITooltipSource
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
+from zope.i18nmessageid.message import Message
+from zope.i18n import translate
 
 class TooltipJs(BrowserView):
     """Implements the tolltip js"""
@@ -24,6 +25,12 @@ class TooltipJs(BrowserView):
         for name, tip_adapter in self.get_all_tips():
             if tip_adapter.global_condition():
                 for tooltip in tip_adapter.tooltips():
+                    text = tooltip['text']
+                    if isinstance(text, Message):
+                        text = translate(
+                            text,
+                            domain=text.domain,
+                            context=self.context)
                     js_code += """{'selector': '%s',
 'text':'%s',
 'condition': '%s'},""" % (
