@@ -35,7 +35,7 @@ class TooltipJs(BrowserView):
 'text':'%s',
 'condition': '%s'},""" % (
                         tooltip['selector'],
-                        tooltip['text'],
+                        text,
                         tooltip['condition'])
         if js_code.endswith(','):
             js_code = js_code[:-1]
