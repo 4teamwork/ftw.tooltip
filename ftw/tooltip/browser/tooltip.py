@@ -30,7 +30,7 @@ class TooltipJs(BrowserView):
                         text = translate(
                             text,
                             domain=text.domain,
-                            context=self.context)
+                            context=self.request)
                     js_code += """{'selector': '%s',
 'text':'%s',
 'condition': '%s'},""" % (
