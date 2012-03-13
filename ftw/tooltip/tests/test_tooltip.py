@@ -8,6 +8,9 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from ftw.tooltip.demo_tooltip_source import (DemoStaticTooltipSource,
     DemoDynamicTooltipSource)
 from zope.component import getGlobalSiteManager
+from zope.browser.interfaces import IBrowserView
+from zope.interface import Interface, implements
+from zope.component import adapts
 
 
 class TestTooltip(MockTestCase):
@@ -101,14 +104,10 @@ class TestTooltip(MockTestCase):
 
     def test_tooltip_default_layout(self):
         view = getMultiAdapter((object(), self.request), name="dynamic_tooltips.js")
-        self.assertEqual(view.get_tooltip_layout(), '<div/>')
+        self.assertEqual(view.get_tooltip_layout(), "<div class='tooltip'/>")
 
 
     def test_tooltip_custom_layout(self):
-        from zope.browser.interfaces import IBrowserView
-        from zope.interface import Interface, implements
-        from zope.component import adapts
-
 
         class ToolTipSpecifigLayout(object):
             implements(IBrowserView)
@@ -128,10 +127,25 @@ class TestTooltip(MockTestCase):
             view.get_tooltip_layout(),
             view())
 
-    def test_translation_text(self):
-        view = getMultiAdapter((object(), self.request), name="dynamic_tooltips.js")
-        js = view.generate_tooltip_js_source()
+    def test_tooltip_custom_config(self):
 
+        class ToolTipCustomConfig(object):
+            implements(IBrowserView)
+            adapts(Interface, Interface)
+
+            def __init__(self, context, request):
+                self.context = context
+                self.request = request
+
+            def __call__(self):
+                return "{offset: [-10, 10]}"
+
+        self.gsm.registerAdapter(ToolTipCustomConfig, name="ftw_tooltip_custom_config")
+        view = getMultiAdapter((object(), self.request), name="dynamic_tooltips.js")
+        self.assertEqual(view.get_custom_config(), "{offset: [-10, 10]}")
+        self.assertIn(
+            view.get_custom_config(),
+            view())
 
     def test_if_no_source_available(self):
         pass

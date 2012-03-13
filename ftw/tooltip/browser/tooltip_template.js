@@ -9,13 +9,18 @@ function ShowTooltip(item){
             $this.attr('title', item.text);
         }
         if ($this.attr('title')){
-            $this.tooltip({
+            var customconfig = <span tal:replace="structure view/get_custom_config" />;
+            var settings = jq.extend({
                 opacity: 0.7,
+                tipClass:'',
                 layout: '<span tal:replace="structure view/get_tooltip_layout" />',
                 events: {
                     tooltip: 'mouseleave'
                 }
-            });
+            }, customconfig);
+
+            $this.tooltip(settings);
+
             $this.data('tooltip').show();
         }
     });
