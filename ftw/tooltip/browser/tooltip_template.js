@@ -11,7 +11,6 @@ function ShowTooltip(item){
         if ($this.attr('title')){
             var customconfig = <span tal:replace="structure view/get_custom_config" />;
             var settings = jq.extend({
-                opacity: 0.7,
                 tipClass:'',
                 layout: "<span tal:replace="structure view/get_tooltip_layout" />",
                 events: {
