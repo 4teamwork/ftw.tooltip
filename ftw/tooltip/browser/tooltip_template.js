@@ -13,7 +13,7 @@ function ShowTooltip(item){
             var settings = jq.extend({
                 opacity: 0.7,
                 tipClass:'',
-                layout: '<span tal:replace="structure view/get_tooltip_layout" />',
+                layout: "<span tal:replace="structure view/get_tooltip_layout" />",
                 events: {
                     tooltip: 'mouseleave'
                 }
