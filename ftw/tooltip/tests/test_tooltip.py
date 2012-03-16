@@ -122,7 +122,7 @@ class TestTooltip(MockTestCase):
 
         self.gsm.registerAdapter(ToolTipSpecifigLayout, name="ftw_tooltip_layout")
         view = getMultiAdapter((object(), self.request), name="dynamic_tooltips.js")
-        self.assertEqual(view.get_tooltip_layout(), "<div class='MyToolTipCustomKlass'/>")
+        self.assertEqual(view.get_tooltip_layout(), "<div class=\\'MyToolTipCustomKlass\\'/>")
         self.assertIn(
             view.get_tooltip_layout(),
             view())

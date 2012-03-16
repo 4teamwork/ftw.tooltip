@@ -47,7 +47,7 @@ class TooltipJs(BrowserView):
             (self.context, self.request), name="ftw_tooltip_layout")
         if layout is None:
             return "<div class='tooltip'/>" # jQuery tools tooltip default layout
-        return layout()
+        return layout().replace("'", r"\'").replace('"', r'\"')
 
     def get_custom_config(self):
         config = queryMultiAdapter(
