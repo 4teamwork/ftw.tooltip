@@ -38,7 +38,7 @@ You can load both examples on your site by register the following adapters:
     >>> from zope.component import getGlobalSiteManager
     >>> gsm = getGlobalSiteManager()
     >>> gsm.registerAdapter(DemoStaticTooltipSource, name="demo1")
-    >>> gsm.registerAdapter(DemoDynamicTooltipSource, name="demo1")
+    >>> gsm.registerAdapter(DemoDynamicTooltipSource, name="demo2")
 
 Or if you are using zcml.
 
@@ -72,14 +72,14 @@ css class is available
     ...     """Base demo static tooltip source. Use a given text"""
     ...     implements(ITooltipSource)
     ...     adapts(Interface, Interface)
-
+    ...
     ...     def __init__(self, context, request):
     ...         self.context = context
     ...         self.request = request
-
+    ...
     ...     def global_condition(self):
     ...         return bool(IFolderish.providedBy(self.context))
-
+    ...
     ...     def tooltips(self):
     ...         return [{
     ...             'selector': u'#edit-bar',
@@ -91,6 +91,24 @@ css class is available
 
     >>> <adapter
     ...    factory="your.module.EditBarTooltip" name="my_edit_bar_tooltip" />
+
+
+You may want to use your own tooltip layout:
+Just register a BrowserView named "ftw_tooltip_layout" and return the tooltip layout you prefere.
+
+Or you can fully customize the tooltip paramters by register a BrowserView
+named "ftw_tooltip_custom_config" - check jquerytools documentation for more details.
+
+Small customization example
+
+::
+
+    {
+        offset: [-10, 10],
+        position: 'right center',
+        opacity: '0.7',
+    }
+
 
 
 Links
