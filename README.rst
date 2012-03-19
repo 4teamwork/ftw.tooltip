@@ -1,14 +1,14 @@
 Introduction
 ============
 
-With `ftw.tooltip` you are able to dynamically add tooltips to every dom
+With ``ftw.tooltip`` you are able to dynamically add tooltips to every DOM
 element, which is selectable by jQuery and allows the title attribute.
 
 
 Installing
 ==========
 
-Add `ftw.tooltip` to your buildout configuration:
+Add ``ftw.tooltip`` to your buildout configuration:
 
 ::
 
@@ -16,33 +16,30 @@ Add `ftw.tooltip` to your buildout configuration:
   eggs =
     ftw.tooltip
 
-Import `ftw.tooltip` default profile.
+Import ``ftw.tooltip`` default profile.
 
 
 Usage
 =====
 
-Basecally you have to register named TooltipSource adapters.
+Basically you have to register named ``ITooltipSource`` adapters.
 They will be queried by a view, which generates the necessary JS code.
 
 There are two example tooltip-source adapter, to show how they work
+
 - Static text example.
-- Dynamic text example, which reads the title attribute of the selected dom element.
+- Dynamic text example, which reads the title attribute of the selected DOM element.
 
-You can load both examples on your site by register the following adapters:
-
-::
+You can load both examples on your site by register the following adapters::
 
     >>> from ftw.tooltip.demo_tooltip_source import (DemoStaticTooltipSource,
     ...    DemoDynamicTooltipSource)
-    >>> from zope.component import getGlobalSiteManager
-    >>> gsm = getGlobalSiteManager()
-    >>> gsm.registerAdapter(DemoStaticTooltipSource, name="demo1")
-    >>> gsm.registerAdapter(DemoDynamicTooltipSource, name="demo2")
+    >>> from zope.component import provideAdapter
+    >>> provideAdapter(DemoStaticTooltipSource, name="demo1")
+    >>> provideAdapter(DemoDynamicTooltipSource, name="demo2")
 
-Or if you are using zcml.
 
-::
+Or if you are using zcml::
 
     <adapter
         factory="ftw.tooltip.demo_tooltip_source.DemoStaticTooltipSource" name="demo1" />
@@ -55,12 +52,10 @@ Or if you are using zcml.
 Example
 =======
 
-It's easy to define a new TooltipSource adapters.
+It's easy to define a new ``ITooltipSource`` adapter.
 The following example will show a tooltip "This is the edit bar" only on
 folderish types (check global_condition) and of course only if "documentEditable"
-css class is available
-
-::
+css class is available::
 
     >>> from zope.component import adapts
     >>> from zope.interface import implements, Interface
@@ -87,7 +82,7 @@ css class is available
     ...             'condition': 'div.documentEditable'}]
 
 
-::
+Register the adapter with ZCML::
 
     >>> <adapter
     ...    factory="your.module.EditBarTooltip" name="my_edit_bar_tooltip" />
@@ -99,9 +94,7 @@ Just register a BrowserView named "ftw_tooltip_layout" and return the tooltip la
 Or you can fully customize the tooltip paramters by register a BrowserView
 named "ftw_tooltip_custom_config" - check jquerytools documentation for more details.
 
-Small customization example
-
-::
+Small customization example::
 
     {
         offset: [-10, 10],
@@ -124,3 +117,4 @@ Copyright
 
 This package is copyright by `4teamwork <http://www.4teamwork.ch/>`_.
 
+``ftw.tooltip`` is licensed under GNU General Public License, version 2.
