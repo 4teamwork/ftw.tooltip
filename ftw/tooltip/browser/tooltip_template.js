@@ -12,6 +12,7 @@ function ShowTooltip(item){
             var customconfig = <span tal:replace="structure view/get_custom_config" />;
             var settings = jq.extend({
                 tipClass:'',
+                cancelDefault: true,
                 layout: "<span tal:replace="structure view/get_tooltip_layout" />",
                 events: {
                     def: "mouseenter,mouseleave mousedown",
