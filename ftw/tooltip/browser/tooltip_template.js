@@ -14,6 +14,7 @@ function ShowTooltip(item){
                 tipClass:'',
                 layout: "<span tal:replace="structure view/get_tooltip_layout" />",
                 events: {
+                    def: "mouseenter,mouseleave mousedown",
                     tooltip: 'mouseleave'
                 }
             }, customconfig);
