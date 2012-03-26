@@ -21,6 +21,8 @@ function ShowTooltip(item){
             }, customconfig);
 
             $this.tooltip(settings);
+            // Manually remove title attribute (live event allways readds the title attr)
+            $this.attr('title', '');
 
             $this.data('tooltip').show();
         }
