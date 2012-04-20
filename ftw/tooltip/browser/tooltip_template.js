@@ -12,6 +12,7 @@ function ShowTooltip(item){
             var customconfig = <span tal:replace="structure view/get_custom_config" />;
             var settings = jq.extend({
                 tipClass:'',
+                delay:0,
                 cancelDefault: true,
                 layout: "<span tal:replace="structure view/get_tooltip_layout" />",
                 events: {
@@ -23,8 +24,7 @@ function ShowTooltip(item){
             $this.tooltip(settings);
             // Manually remove title attribute (live event allways readds the title attr)
             $this.attr('title', '');
-
-            $this.data('tooltip').show();
+            $this.trigger('mouseover')
         }
     });
 }

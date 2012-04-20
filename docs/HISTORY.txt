@@ -4,7 +4,12 @@ Changelog
 1.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Set delay to 0 by default.
+  [mathias.leimgruber]
+
+- Trigger mousover event to activate the tooltip, otherwise
+  some tooltip configurations will not work (ex. predelay)
+  [mathias.leimgruber]
 
 
 1.0.1 (2012-03-26)
