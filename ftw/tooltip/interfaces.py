@@ -15,7 +15,6 @@ class ITooltipSource(Interface):
     # def general_tooltip_condition():
     #     """A jQuery selector to check if all following tooltips
     #     should be applied"""
-
     def tooltips():
         """Defines a set of dicts containing selector
         tooltiptext and an additional/optional condition"""

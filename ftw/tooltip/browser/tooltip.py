@@ -5,6 +5,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.i18nmessageid.message import Message
 from zope.i18n import translate
 
+
 class TooltipJs(BrowserView):
     """Implements the tolltip js"""
 
@@ -22,7 +23,7 @@ class TooltipJs(BrowserView):
 
     def generate_tooltip_js_source(self):
         js_code = "["
-        for name, tip_adapter in self.get_all_tips():
+        for _name, tip_adapter in self.get_all_tips():
             if tip_adapter.global_condition():
                 for tooltip in tip_adapter.tooltips():
                     text = tooltip['text']
@@ -46,7 +47,7 @@ class TooltipJs(BrowserView):
         layout = queryMultiAdapter(
             (self.context, self.request), name="ftw_tooltip_layout")
         if layout is None:
-            return "<div class='tooltip'/>" # jQuery tools tooltip default layout
+            return "<div class='tooltip'/>" # Tooltip default layout
         return layout().replace("'", r"\'").replace('"', r'\"')
 
     def get_custom_config(self):
