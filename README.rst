@@ -110,7 +110,8 @@ Links
 - Main github project repository: https://github.com/4teamwork/ftw.tooltip
 - Issue tracker: https://github.com/4teamwork/ftw.tooltip/issues
 - Package on pypi: http://pypi.python.org/pypi/ftw.tooltip
-- Continuous integration: https://jenkins.4teamwork.ch/job/ftw.tooltip/
+- Continuous integration: https://jenkins.4teamwork.ch/search?q=ftw.tooltip
+
 
 Copyright
 =========
