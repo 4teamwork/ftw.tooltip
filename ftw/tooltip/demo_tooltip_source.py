@@ -17,7 +17,6 @@ class DemoStaticTooltipSource(object):
     def global_condition(self):
         return True
 
-
     # def general_tooltip_condition(self):
     #     return "body"
 

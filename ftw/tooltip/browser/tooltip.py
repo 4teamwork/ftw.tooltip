@@ -40,19 +40,19 @@ class TooltipJs(BrowserView):
                         tooltip['condition'])
         if js_code.endswith(','):
             js_code = js_code[:-1]
-        js_code +="]"
+        js_code += "]"
         return js_code
 
     def get_tooltip_layout(self):
         layout = queryMultiAdapter(
             (self.context, self.request), name="ftw_tooltip_layout")
         if layout is None:
-            return "<div class='tooltip'/>" # Tooltip default layout
+            return "<div class='tooltip'/>"  # Tooltip default layout
         return layout().replace("'", r"\'").replace('"', r'\"')
 
     def get_custom_config(self):
         config = queryMultiAdapter(
             (self.context, self.request), name="ftw_tooltip_custom_config")
         if config is None:
-            return "{}" # jQuery tools tooltip default layout
+            return "{}"  # jQuery tools tooltip default layout
         return config()
