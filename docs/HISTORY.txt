@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.4 (unreleased)
+1.0.4 (2012-06-14)
 ------------------
 
 - Escape tooltips. HTML should not be rendered but displayed.
