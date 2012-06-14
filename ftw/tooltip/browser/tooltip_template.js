@@ -9,6 +9,10 @@ function ShowTooltip(item){
             $this.attr('title', item.text);
         }
         if ($this.attr('title')){
+            /* escape text for prohibiting JS injection */
+            var title = $('<div/>').text($this.attr('title')).html();
+            $this.attr('title', title);
+
             var customconfig = <span tal:replace="structure view/get_custom_config" />;
             var settings = jq.extend({
                 tipClass:'',

@@ -4,7 +4,9 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Escape tooltips. HTML should not be rendered but displayed.
+  This prevents JS injection.
+  [jone]
 
 
 1.0.3 (2012-05-09)
