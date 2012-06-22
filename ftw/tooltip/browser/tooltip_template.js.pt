@@ -1,3 +1,4 @@
+<div tal:replace="structure python: '//<![CDATA['" />
 <tal:def define="ftwtooltips view/generate_tooltip_js_source">
 var ftwtooltips = <span tal:replace="ftwtooltips" />;
 
@@ -42,3 +43,4 @@ jq(function(){
     });
 });
 </tal:def>
+<div tal:replace="structure python: '//]]>'" />

@@ -9,7 +9,7 @@ from zope.i18n import translate
 class TooltipJs(BrowserView):
     """Implements the tolltip js"""
 
-    template = ViewPageTemplateFile('tooltip_template.js')
+    template = ViewPageTemplateFile('tooltip_template.js.pt')
 
     def __call__(self):
         """Returns the js code directly"""

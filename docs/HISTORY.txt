@@ -4,7 +4,11 @@ Changelog
 1.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Wrapped <![CDATA[ around inline javascript (W3C).
+  [Julian Infanger]
+
+- Fixed wrong ending of a page template file.
+  [Julian Infanger]
 
 
 1.0.4 (2012-06-14)
