@@ -4,15 +4,22 @@ var ftwtooltips = <span tal:replace="ftwtooltips" />;
 
 function ShowTooltip(item){
     jq(item.selector).live('mouseover', function(e){
+
         e.preventDefault();
         var $this = jq(this);
         if (item.text){
+
             $this.attr('title', item.text);
         }
+        if (item.content){
+          $this.attr('title', $this.siblings(item.content).html());
+        }
         if ($this.attr('title')){
-            /* escape text for prohibiting JS injection */
-            var title = $('<div/>').text($this.attr('title')).html();
-            $this.attr('title', title);
+            if (!item.content){
+              /* escape text for prohibiting JS injection */
+              var title = $('<div/>').text($this.attr('title')).html();
+              $this.attr('title', title);
+            }
 
             var customconfig = <span tal:replace="structure view/get_custom_config" />;
             var settings = jq.extend({

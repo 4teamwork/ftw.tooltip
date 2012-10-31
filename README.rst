@@ -103,6 +103,37 @@ Small customization example::
     }
 
 
+Example: tooltip using exsting html
+===================================
+It's also possible to use an extisting html-tag as data source instead of the title attribute. For this case only a small adjustment is necessary:
+
+The ``ITooltipSource`` adapter should return a js-selector in the ``content``
+attribute instead of a text attribute::
+
+    >>> from zope.component import adapts
+    >>> from zope.interface import implements, Interface
+    >>> from ftw.tooltip.interfaces import ITooltipSource
+    >>> from plone.app.layout.navigation.interfaces import INavigationRoot
+    >>> from Products.CMFCore.interfaces import IFolderish
+
+    >>> class EditBarTooltip(object):
+    ...     """Base demo static tooltip source. Use a given text"""
+    ...     implements(ITooltipSource)
+    ...     adapts(Interface, Interface)
+    ...
+    ...     def __init__(self, context, request):
+    ...         self.context = context
+    ...         self.request = request
+    ...
+    ...     def global_condition(self):
+    ...         return bool(IFolderish.providedBy(self.context))
+    ...
+    ...     def tooltips(self):
+    ...         return [{
+    ...             'selector': u'#edit-bar',
+    ...             'condition': 'div.documentEditable',
+    ...             'content': u'.tabbedview-tooltip-data'}]
+
 
 Links
 =====

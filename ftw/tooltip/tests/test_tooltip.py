@@ -3,10 +3,10 @@ from plone.mocktestcase import MockTestCase
 from zope.component import getMultiAdapter, queryMultiAdapter
 from zope.interface.verify import verifyClass
 from zope.interface import directlyProvides
-from ftw.tooltip.interfaces import  ITooltipSource
+from ftw.tooltip.interfaces import ITooltipSource
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from ftw.tooltip.demo_tooltip_source import (DemoStaticTooltipSource,
-    DemoDynamicTooltipSource)
+    DemoDynamicTooltipSource, DemoContentTooltipSource)
 from zope.component import getGlobalSiteManager
 from zope.browser.interfaces import IBrowserView
 from zope.interface import Interface, implements
@@ -68,7 +68,7 @@ class TestTooltip(MockTestCase):
         view = getMultiAdapter((object(), self.request),
                                 name="dynamic_tooltips.js")
         for name, adapter in view.get_all_tips():
-            self.assertTrue(adapter.__class__.__name__ in \
+            self.assertTrue(adapter.__class__.__name__ in
                 ['DemoDynamicTooltipSource', 'DemoStaticTooltipSource'])
             self.assertTrue(isinstance(name, basestring))
 
@@ -80,7 +80,8 @@ class TestTooltip(MockTestCase):
             js,
             u"""[{'selector': '#portal-logo',
 'text':'This is the tooltip',
-'condition': 'body'}]""")
+'condition': 'body',
+'content': ''}]""")
 
     def test_tooltip_js_multiple_adapters_generation(self):
         # The text attr of the second adapter should be empty, because it uses
@@ -93,9 +94,27 @@ class TestTooltip(MockTestCase):
             js,
             u"""[{'selector': '#portal-globalnav li a',
 'text':'',
-'condition': 'body'},{'selector': '#portal-logo',
+'condition': 'body',
+'content': ''},{'selector': '#portal-logo',
 'text':'This is the tooltip',
-'condition': 'body'}]""")
+'condition': 'body',
+'content': ''}]""")
+
+    def test_tooltip_js_generation_with_content(self):
+        self.gsm.registerAdapter(DemoContentTooltipSource, name="demo2")
+        view = getMultiAdapter((object(), self.request),
+                                name="dynamic_tooltips.js")
+        js = view.generate_tooltip_js_source()
+
+        self.assertEqual(
+            js,
+            u"""[{'selector': '#tooltip-selector',
+'text':'',
+'condition': 'body',
+'content': '.tabbedview-tooltip-data'},{'selector': '#portal-logo',
+'text':'This is the tooltip',
+'condition': 'body',
+'content': ''}]""")
 
     def test_hole_js(self):
         view = getMultiAdapter((object(), self.request),
