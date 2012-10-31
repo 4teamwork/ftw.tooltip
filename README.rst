@@ -105,7 +105,7 @@ Small customization example::
 
 Example: tooltip using exsting html
 ===================================
-It's also possible to use an extisting html-tag as data source instead of the title attribute. For this case only a small adjustment is necessary:
+It's also possible to use an html-tag as data source(must be a sibling of the selctor) instead of the title attribute. For this case only a small adjustment is necessary:
 
 The ``ITooltipSource`` adapter should return a js-selector in the ``content``
 attribute instead of a text attribute::
@@ -133,6 +133,17 @@ attribute instead of a text attribute::
     ...             'selector': u'#edit-bar',
     ...             'condition': 'div.documentEditable',
     ...             'content': u'.tabbedview-tooltip-data'}]
+
+
+The only constraint in the html structure, wich must receive attention, is that the content tag must be a sibling of the selector tag. For example::
+
+    ... <a href="/edit_bar" id="edit_bar"></a>
+    ... <div class="tabbedview-tooltip-data">
+    ...     <div class="tooltip-content">
+    ...         <div class="tooltip-header">Tooltip Headeer</div>
+    ...         <div class="tooltip-breadcrumb">Lorem ipsum ...</div>
+    ...     </div>
+    ... </div>
 
 
 Links
