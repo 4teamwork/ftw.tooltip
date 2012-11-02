@@ -26,7 +26,7 @@ class TooltipJs(BrowserView):
         for _name, tip_adapter in self.get_all_tips():
             if tip_adapter.global_condition():
                 for tooltip in tip_adapter.tooltips():
-                    text = tooltip['text']
+                    text = tooltip.get('text', '')
                     if isinstance(text, Message):
                         text = translate(
                             text,
@@ -34,10 +34,12 @@ class TooltipJs(BrowserView):
                             context=self.request)
                     js_code += """{'selector': '%s',
 'text':'%s',
-'condition': '%s'},""" % (
+'condition': '%s',
+'content': '%s'},""" % (
                         tooltip['selector'],
                         text,
-                        tooltip['condition'])
+                        tooltip['condition'],
+                        tooltip.get('content', ''))
         if js_code.endswith(','):
             js_code = js_code[:-1]
         js_code += "]"

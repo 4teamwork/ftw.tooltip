@@ -51,3 +51,25 @@ class DemoDynamicTooltipSource(object):
             'text': u'',
             'condition': 'body'
         }]
+
+
+class DemoContentTooltipSource(object):
+    """Base demo content tooltip source. Use a existing html-tag
+    as data source."""
+
+    implements(ITooltipSource)
+    adapts(Interface, Interface)
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def global_condition(self):
+        return True
+
+    def tooltips(self):
+        return [{
+            'selector': u'#tooltip-selector',
+            'condition': 'body',
+            'content': u'.tabbedview-tooltip-data',
+        }]
