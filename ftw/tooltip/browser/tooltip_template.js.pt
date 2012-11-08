@@ -3,10 +3,10 @@
 var ftwtooltips = <span tal:replace="ftwtooltips" />;
 
 function ShowTooltip(item){
-    jq(item.selector).live('mouseover', function(e){
+    $(item.selector).live('mouseover', function(e){
 
         e.preventDefault();
-        var $this = jq(this);
+        var $this = $(this);
         if (item.text){
 
             $this.attr('title', item.text);
@@ -22,7 +22,7 @@ function ShowTooltip(item){
             }
 
             var customconfig = <span tal:replace="structure view/get_custom_config" />;
-            var settings = jq.extend({
+            var settings = $.extend({
                 tipClass:'',
                 delay:0,
                 cancelDefault: true,
@@ -41,9 +41,9 @@ function ShowTooltip(item){
     });
 }
 
-jq(function(){
-    jq(ftwtooltips).each(function(i, o){
-        if (jq(o.condition).length !== 0){
+$(function(){
+    $(ftwtooltips).each(function(i, o){
+        if ($(o.condition).length !== 0){
             ShowTooltip(o);
         }
 
