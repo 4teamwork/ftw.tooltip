@@ -4,6 +4,9 @@ Changelog
 1.0.6 (unreleased)
 ------------------
 
+- Adjust javscripts: Use $ instead of deprecated jq.
+  [phgross]
+
 - Added functionality wich allows using html tags as tooltip data.
   [phgross]
 
