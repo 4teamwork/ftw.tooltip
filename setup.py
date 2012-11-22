@@ -34,6 +34,7 @@ setup(name='ftw.tooltip',
 
       install_requires=[
         'setuptools',
+        'Products.CMFPlone',
         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
