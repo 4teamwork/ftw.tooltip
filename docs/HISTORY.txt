@@ -4,6 +4,9 @@ Changelog
 1.0.6 (unreleased)
 ------------------
 
+- Add translations.
+  [jone]
+
 - Adjust javscripts: Use $ instead of deprecated jq.
   [phgross]
 
