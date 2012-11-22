@@ -5,8 +5,16 @@ from setuptools import setup, find_packages
 version = '1.0.6.dev0'
 mainainter = 'Mathias Leimgruber'
 
-tests_require = ['plone.app.testing',
-                 'plone.mocktestcase']
+tests_require = [
+    'plone.testing',
+    'plone.mocktestcase',
+    'zope.browser',
+    'zope.component',
+    'zope.configuration',
+    'zope.interface',
+    'zope.publisher',
+    'zope.traversing',
+    ]
 
 setup(name='ftw.tooltip',
       version=version,
@@ -38,8 +46,18 @@ setup(name='ftw.tooltip',
 
       install_requires=[
         'setuptools',
+
+        # Zope
+        'Zope2',
+        'zope.component',
+        'zope.i18n',
+        'zope.i18nmessageid',
+        'zope.interface',
+
+        # Plone
         'Products.CMFPlone',
         ],
+
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
 
