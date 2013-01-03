@@ -4,6 +4,12 @@ Introduction
 With ``ftw.tooltip`` you are able to dynamically add tooltips to every DOM
 element, which is selectable by jQuery and allows the title attribute.
 
+.. figure:: http://onegov.ch/approved.png/image
+   :align: right
+   :target: http://onegov.ch/community/zertifizierte-module/ftw.tooltip
+
+   Certified: 01/2013
+
 
 Installing
 ==========
