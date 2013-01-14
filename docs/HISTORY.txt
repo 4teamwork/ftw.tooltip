@@ -4,6 +4,8 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
+- Change behaviour of initialize tooltips on ajax calls.
+
 - onegov.ch approved: add badge to readme.
   [jone]
 

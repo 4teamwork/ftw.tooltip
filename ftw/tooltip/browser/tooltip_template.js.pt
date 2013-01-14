@@ -4,7 +4,6 @@ var ftwtooltips = <span tal:replace="ftwtooltips" />;
 
 function ShowTooltip(item){
     $(item.selector).live('mouseover', function(e){
-
         e.preventDefault();
         var $this = $(this);
         if (item.text){
@@ -24,7 +23,7 @@ function ShowTooltip(item){
             var customconfig = <span tal:replace="structure view/get_custom_config" />;
             var settings = $.extend({
                 tipClass:'',
-                delay:0,
+                predelay:200,
                 cancelDefault: true,
                 layout: "<span tal:replace="structure view/get_tooltip_layout" />",
                 events: {
@@ -32,11 +31,14 @@ function ShowTooltip(item){
                     tooltip: 'mouseleave'
                 }
             }, customconfig);
-
-            $this.tooltip(settings);
+            if (!$this.data('tooltip')){
+                $this.tooltip(settings);
+                $this.trigger('mouseover')
+            }
             // Manually remove title attribute (live event allways readds the title attr)
             $this.attr('title', '');
-            $this.trigger('mouseover')
+
+            //$this.data('tooltip').show()
         }
     });
 }
