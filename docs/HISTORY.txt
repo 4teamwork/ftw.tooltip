@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.1 (unreleased)
+1.1.1 (2013-01-21)
 ------------------
 
 - Change behaviour of initialize tooltips on ajax calls.
