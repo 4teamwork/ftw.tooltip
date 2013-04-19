@@ -167,3 +167,7 @@ Copyright
 This package is copyright by `4teamwork <http://www.4teamwork.ch/>`_.
 
 ``ftw.tooltip`` is licensed under GNU General Public License, version 2.
+
+.. image:: https://cruel-carlota.pagodabox.com/97b8423f2b907162d48e5a8315fed8ad
+   :alt: githalytics.com
+   :target: http://githalytics.com/4teamwork/ftw.tooltip
