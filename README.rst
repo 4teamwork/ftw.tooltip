@@ -152,6 +152,11 @@ The only constraint in the html structure, wich must receive attention, is that 
     ... </div>
 
 
+Compatibility
+-------------
+
+Runs with `Plone <http://www.plone.org/>`_ `4.1`, `4.2` or `4.3`.
+
 Links
 =====
 
