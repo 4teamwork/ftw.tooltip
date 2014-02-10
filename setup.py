@@ -47,6 +47,7 @@ setup(name='ftw.tooltip',
 
       install_requires=[
         'setuptools',
+        'ftw.upgrade',
 
         # Zope
         'Zope2',

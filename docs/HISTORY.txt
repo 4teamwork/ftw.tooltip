@@ -4,7 +4,8 @@ Changelog
 1.1.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Activate dynamic tooltips to reposition it, so that they are always visible
+  [elio.schmutz]
 
 
 1.1.2 (2013-10-21)

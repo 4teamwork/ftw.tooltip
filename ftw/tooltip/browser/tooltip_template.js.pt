@@ -32,7 +32,7 @@ function ShowTooltip(item){
                 }
             }, customconfig);
             if (!$this.data('tooltip')){
-                $this.tooltip(settings);
+                $this.tooltip(settings).dynamic({right: {offset: [0, $this.width()]}});
                 $this.trigger('mouseover')
             }
             // Manually remove title attribute (live event allways readds the title attr)
