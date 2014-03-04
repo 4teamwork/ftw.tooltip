@@ -11,6 +11,7 @@ from zope.component import getGlobalSiteManager
 from zope.browser.interfaces import IBrowserView
 from zope.interface import Interface, implements
 from zope.component import adapts
+from mocker import ANY
 
 
 class TestTooltip(MockTestCase):
@@ -24,6 +25,8 @@ class TestTooltip(MockTestCase):
         setattr(self.request, 'response', self.response)
         self.expect(self.response.getHeader('Content-Type')).result(
             'text/javascript')
+        self.response.setHeader('Content-Type', 'application/javascript')
+
         directlyProvides(self.request, IDefaultBrowserLayer)
 
         self.replay()

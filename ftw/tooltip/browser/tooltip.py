@@ -13,6 +13,8 @@ class TooltipJs(BrowserView):
 
     def __call__(self):
         """Returns the js code directly"""
+        self.request.response.setHeader('Content-Type',
+                                        'application/javascript')
         return self.template()
 
     def get_all_tips(self):

@@ -4,7 +4,8 @@ Changelog
 1.1.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not render dynamic_tooltips.js inline.
+  [mathias.leimgruber]
 
 
 1.1.3 (2014-02-10)
