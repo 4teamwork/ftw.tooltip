@@ -2,6 +2,5 @@
 <object name="portal_javascripts" meta_type="JavaScripts Registry">
     <javascript cacheable="False" compression="safe" cookable="False" expression=""
                 enabled="True" id="@@dynamic_tooltips.js" inline="False"
-                insert-after="*" />
-    <javascript enabled="True" id="++resource++plone.app.jquerytools.plugins.js" />
+                insert-after="*"/>
 </object>

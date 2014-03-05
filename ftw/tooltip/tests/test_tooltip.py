@@ -1,16 +1,17 @@
+from ftw.tooltip.demo_tooltip_source import DemoContentTooltipSource
+from ftw.tooltip.demo_tooltip_source import DemoDynamicTooltipSource
+from ftw.tooltip.demo_tooltip_source import DemoStaticTooltipSource
+from ftw.tooltip.interfaces import ITooltipSource
 from ftw.tooltip.testing import FTWTOOLTIP_ZCML_LAYER
 from plone.mocktestcase import MockTestCase
-from zope.component import getMultiAdapter, queryMultiAdapter
-from zope.interface.verify import verifyClass
-from zope.interface import directlyProvides
-from ftw.tooltip.interfaces import ITooltipSource
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-from ftw.tooltip.demo_tooltip_source import (DemoStaticTooltipSource,
-    DemoDynamicTooltipSource, DemoContentTooltipSource)
-from zope.component import getGlobalSiteManager
 from zope.browser.interfaces import IBrowserView
-from zope.interface import Interface, implements
 from zope.component import adapts
+from zope.component import getGlobalSiteManager
+from zope.component import getMultiAdapter, queryMultiAdapter
+from zope.interface import directlyProvides
+from zope.interface import Interface, implements
+from zope.interface.verify import verifyClass
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 
 class TestTooltip(MockTestCase):
@@ -24,6 +25,8 @@ class TestTooltip(MockTestCase):
         setattr(self.request, 'response', self.response)
         self.expect(self.response.getHeader('Content-Type')).result(
             'text/javascript')
+        self.response.setHeader('Content-Type', 'application/javascript')
+
         directlyProvides(self.request, IDefaultBrowserLayer)
 
         self.replay()
@@ -61,20 +64,21 @@ class TestTooltip(MockTestCase):
 
     def test_js_view_registered(self):
         view = getMultiAdapter((object(), self.request),
-                                name="dynamic_tooltips.js")
+                               name="dynamic_tooltips.js")
         self.assertTrue(view)
 
     def test_get_all_tooltip(self):
         view = getMultiAdapter((object(), self.request),
-                                name="dynamic_tooltips.js")
+                               name="dynamic_tooltips.js")
         for name, adapter in view.get_all_tips():
-            self.assertTrue(adapter.__class__.__name__ in
+            self.assertTrue(
+                adapter.__class__.__name__ in
                 ['DemoDynamicTooltipSource', 'DemoStaticTooltipSource'])
             self.assertTrue(isinstance(name, basestring))
 
     def test_tooltip_js_generation(self):
         view = getMultiAdapter((object(), self.request),
-                                name="dynamic_tooltips.js")
+                               name="dynamic_tooltips.js")
         js = view.generate_tooltip_js_source()
         self.assertEqual(
             js,
@@ -88,7 +92,7 @@ class TestTooltip(MockTestCase):
         # the title attr of the matched element
         self.gsm.registerAdapter(DemoDynamicTooltipSource, name="demo2")
         view = getMultiAdapter((object(), self.request),
-                                name="dynamic_tooltips.js")
+                               name="dynamic_tooltips.js")
         js = view.generate_tooltip_js_source()
         self.assertEqual(
             js,
@@ -103,7 +107,7 @@ class TestTooltip(MockTestCase):
     def test_tooltip_js_generation_with_content(self):
         self.gsm.registerAdapter(DemoContentTooltipSource, name="demo2")
         view = getMultiAdapter((object(), self.request),
-                                name="dynamic_tooltips.js")
+                               name="dynamic_tooltips.js")
         js = view.generate_tooltip_js_source()
 
         self.assertEqual(
@@ -118,12 +122,12 @@ class TestTooltip(MockTestCase):
 
     def test_hole_js(self):
         view = getMultiAdapter((object(), self.request),
-                                name="dynamic_tooltips.js")
+                               name="dynamic_tooltips.js")
         self.assertIn(view.generate_tooltip_js_source(), view())
 
     def test_tooltip_default_layout(self):
         view = getMultiAdapter((object(), self.request),
-                                name="dynamic_tooltips.js")
+                               name="dynamic_tooltips.js")
         self.assertEqual(view.get_tooltip_layout(), "<div class='tooltip'/>")
 
     def test_tooltip_custom_layout(self):
@@ -142,7 +146,7 @@ class TestTooltip(MockTestCase):
         self.gsm.registerAdapter(ToolTipSpecifigLayout,
                                  name="ftw_tooltip_layout")
         view = getMultiAdapter((object(), self.request),
-                                name="dynamic_tooltips.js")
+                               name="dynamic_tooltips.js")
         self.assertEqual(view.get_tooltip_layout(),
                          "<div class=\\'MyToolTipCustomKlass\\'/>")
         self.assertIn(

@@ -15,4 +15,13 @@
         directory="profiles/1131"
         />
 
+    <!-- 1131 -> 1132-->
+    <upgrade-step:importProfile
+        title="Do not render dynamic_tooltips.js inline"
+        profile="ftw.tooltip:default"
+        source="1131"
+        destination="1132"
+        directory="profiles/1132"
+        />
+
 </configure>
