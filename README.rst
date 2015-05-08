@@ -160,9 +160,9 @@ Runs with `Plone <http://www.plone.org/>`_ `4.1`, `4.2` or `4.3`.
 Links
 =====
 
-- Main github project repository: https://github.com/4teamwork/ftw.tooltip
-- Issue tracker: https://github.com/4teamwork/ftw.tooltip/issues
-- Package on pypi: http://pypi.python.org/pypi/ftw.tooltip
+- Github: https://github.com/4teamwork/ftw.tooltip
+- Issues: https://github.com/4teamwork/ftw.tooltip/issues
+- Pypi: http://pypi.python.org/pypi/ftw.tooltip
 - Continuous integration: https://jenkins.4teamwork.ch/search?q=ftw.tooltip
 
 
