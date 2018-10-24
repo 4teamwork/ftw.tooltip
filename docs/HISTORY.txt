@@ -4,6 +4,7 @@ Changelog
 1.1.5 (unreleased)
 ------------------
 
+- Drop Plone 4.2 support. [busykoala]
 - Drop Plone 4.1 support. [jone]
 
 
