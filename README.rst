@@ -155,7 +155,7 @@ The only constraint in the html structure, wich must receive attention, is that 
 Compatibility
 -------------
 
-Runs with `Plone <http://www.plone.org/>`_ `4.2` or `4.3`.
+Runs with `Plone <http://www.plone.org/>`_ `4.3`.
 
 Links
 =====
