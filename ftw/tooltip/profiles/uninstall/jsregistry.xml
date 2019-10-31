@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+    <javascript id="@@dynamic_tooltips.js" remove="True" />
+    <javascript id="++resource++plone.app.jquerytools.plugins.js" enabled="False" />
+</object>
