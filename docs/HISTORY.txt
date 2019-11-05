@@ -6,6 +6,7 @@ Changelog
 
 - Drop Plone 4.2 support. [busykoala]
 - Drop Plone 4.1 support. [jone]
+- Add uninstall profile. [tinagerber]
 
 
 1.1.4 (2014-03-27)

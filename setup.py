@@ -6,6 +6,7 @@ version = '1.1.5.dev0'
 mainainter = 'Mathias Leimgruber'
 
 tests_require = [
+    'ftw.testing',
     'plone.testing',
     'plone.mocktestcase',
     'zope.browser',
